@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.dto.ParkingInfoDTOGJR;
+import com.example.demo.dto.GJ.ParkingInfoDTOGJR;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.GetMapping;

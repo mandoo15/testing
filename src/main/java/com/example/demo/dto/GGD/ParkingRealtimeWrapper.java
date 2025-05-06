@@ -4,19 +4,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ParkingServiceResultWrapper {
+public class ParkingRealtimeWrapper {
 
     @JsonProperty("msgBody")
-    private ParkingMessageBody msgBody;
+    private ParkingRealtimeBody msgBody;
 
-    public ParkingMessageBody getMsgBody() {
+    public ParkingRealtimeBody getMsgBody() {
         return msgBody;
     }
 
-    public void setMsgBody(ParkingMessageBody msgBody) {
+    public void setMsgBody(ParkingRealtimeBody msgBody) {
         this.msgBody = msgBody;
     }
 }
-
-
-

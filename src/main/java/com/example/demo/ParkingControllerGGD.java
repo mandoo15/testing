@@ -29,39 +29,43 @@ public class ParkingControllerGGD {
         List<ParkingInfoDTOGGD> totalList = new ArrayList<>();
 
         try {
-            XmlMapper xmlMapper = new XmlMapper();
+            XmlMapper xmlMapper = new XmlMapper(); // generate xmlMapper object that mapping to xml data
 
-            for (String regionId : regionIds) {
-                String apiUrl = "https://openapigits.gg.go.kr/api/rest/getParkingPlaceInfoList?serviceKey=YOUR_SERVICE_KEY"
+            for (String regionId : regionIds) { // until the end of regionIds
+                String apiUrl = "https://openapigits.gg.go.kr/api/rest/getParkingPlaceInfoList?serviceKey=e0ba55f1a97c694e87ca3a18d1cafb18db69aca"
                         + "&laeId=" + regionId;
 
-                HttpURLConnection conn = (HttpURLConnection) new URL(apiUrl).openConnection();
-                conn.setRequestMethod("GET");
+                HttpURLConnection conn = (HttpURLConnection) new URL(apiUrl).openConnection(); // create http connection for requesting API
+                conn.setRequestMethod("GET"); // request HTTP to GET
 
-                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-                StringBuilder xml = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); // generate the new BufferReader for reading UTF-8 encoding response
+                StringBuilder xml = new StringBuilder(); // generate StringBuilder to save xml response data
+                String line; // 한 줄씩 읽기 위한 임시 문자열 변수
+                while ((line = reader.readLine()) != null) { // 응답 데이터 한 줄씩 읽어서 xml 변수에 누적
                     xml.append(line);
                 }
-                conn.disconnect();
+                conn.disconnect(); // quit connection HTTP
 
-                ParkingServiceResultWrapper wrapper = xmlMapper.readValue(xml.toString(), ParkingServiceResultWrapper.class);
+                ParkingServiceResultWrapper wrapper = xmlMapper.readValue(xml.toString(), ParkingServiceResultWrapper.class); // change, string xml to ParkingServiceResultWrapper object
+                //System.out.println("응답 XML: " + xml.toString());
 
                 if (wrapper != null && wrapper.getMsgBody() != null && wrapper.getMsgBody().getItemList() != null) {
-                    ParkingInfoDTOGGD dto = wrapper.getMsgBody().getItemList();
-                    dto.setInfoLevel("2");
-                    totalList.add(dto);
-                } else {
-                    System.out.println("[경고] msgBody 또는 itemList 없음 - 지역 ID: " + regionId);
+                    List<ParkingInfoDTOGGD> items = wrapper.getMsgBody().getItemList();
+                    for (ParkingInfoDTOGGD dto : items) {
+                        dto.setInfoLevel("2");
+                        totalList.add(dto);
+                    }
+                }
+                else {
+                    System.out.println("[경고] msgBody 또는 itemList 없음 - 지역 ID: " + regionId); // 정보 없으면 이 내용 출력
                 }
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace(); // 예외처리 -- 예외 발생 시 스택트레이스 출력
         }
 
-        return totalList;
+        return totalList; // 컨트롤러에서 생성한 xml 데이터 라스트 형태로 반환 - 수집된 주차장 정보 리스트 반환
     }
 }
 

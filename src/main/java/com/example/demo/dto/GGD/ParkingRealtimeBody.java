@@ -7,24 +7,18 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ParkingMessageBody {
+public class ParkingRealtimeBody {
 
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "itemList")
-    private List<ParkingInfoDTOGGD> itemList;
+    private List<ParkingInfoDTOGGDR> itemList;
 
-    public List<ParkingInfoDTOGGD> getItemList() {
+    public List<ParkingInfoDTOGGDR> getItemList() {
         return itemList;
     }
 
-    public void setItemList(List<ParkingInfoDTOGGD> itemList) {
+    public void setItemList(List<ParkingInfoDTOGGDR> itemList) {
         this.itemList = itemList;
     }
 }
-
-
-
-
-
-
 

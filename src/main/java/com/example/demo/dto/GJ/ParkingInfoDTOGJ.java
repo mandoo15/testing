@@ -1,8 +1,7 @@
-package com.example.demo.dto;
+package com.example.demo.dto.GJ;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ParkingInfoDTOGJ { // 경주시 기본정보

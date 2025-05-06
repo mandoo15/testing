@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package com.example.demo.dto.GJ;
 
 import com.example.demo.dto.GGD.ParkingInfoDTOGGD;
 import com.fasterxml.jackson.annotation.JsonProperty;
