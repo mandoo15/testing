@@ -4,6 +4,7 @@ import com.example.demo.dto.GGD.ParkingServiceResultWrapper;
 import com.example.demo.dto.GGD.ParkingMessageBody;
 import com.example.demo.dto.GGD.ParkingInfoDTOGGD;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class ParkingControllerGGD {
 

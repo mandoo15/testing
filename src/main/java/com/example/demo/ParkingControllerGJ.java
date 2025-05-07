@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.dto.GJ.ParkingInfoDTOGJ;
 import com.example.demo.dto.GJ.ParkingResponseWrapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 // 경주시 기본정보
+@CrossOrigin(origins = "*")
 @RestController
 public class ParkingControllerGJ {
 

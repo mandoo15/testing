@@ -4,6 +4,7 @@ import com.example.demo.dto.GGD.ParkingInfoDTOGGDR;
 import com.example.demo.dto.GGD.ParkingRealtimeWrapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
